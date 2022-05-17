@@ -1,0 +1,11 @@
+.ipynb_checkpoints/
+**/__pycache__/
+__pycache__/
+.idea/
+.pytest_cache/
+runs
+weights
+venv
+videos
+*.log
+*.ipynb

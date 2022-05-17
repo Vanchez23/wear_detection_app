@@ -1,0 +1,13 @@
+keypoints_model:
+        id: "1zYC7go9EV0XaSlSBjMaiyE_4TcHc_S38"
+        type: "google_drive"
+        path: "weights/pose_hrnet_w32_256x192.pth"
+clothes_model:
+        id: "1CU82TBacloFUbvetKiZt8itaNT4Z85mA"
+        type: "google_drive"
+        path: "weights/yolov5m_clothes_16_03_21_2v89f2b8.pt"
+person_model:
+        url: "https://github.com/ultralytics/yolov5/releases/download/v3.1/yolov5s.pt"
+        type: "curl"
+        path: "weights/yolov5s.pt"
+             

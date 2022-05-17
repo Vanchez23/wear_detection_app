@@ -1,0 +1,16 @@
+SHOOT_MODE: false
+LOGGER_FILENAME: ''
+LOGGER_LEVEL: INFO
+LAMP_NAMES:
+  - shield
+  - helmet
+  - jacket
+  - pants
+  - glove1
+  - glove2
+  - equipped
+SAVE_VIDEO_PATH: 'videos'
+VIDEO_NAME_PREFFIX: ''
+VIDEO_NAME_SUFFIX: 'conf0.5'
+VIDEO_FOURCC: MP4V
+VIDEO_SAVE_FORMAT: mp4

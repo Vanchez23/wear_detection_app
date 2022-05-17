@@ -1,0 +1,133 @@
+VIDEOSTREAM:
+  PIPE: 'videos/2021-03-11_13-47-26.mp4' #'rtsp://admin:camera12345@172.22.101.2'
+  DRAW_LABELS: true
+  DRAW_TEXT: true
+  LOG_DETECTION_TIME: false
+CLOTHES_MODEL:
+  AGNOSTIC_NMS: true
+  CONF_THRES: 0.5
+  DEVICE: 0 #'cpu' #0
+  IMG_SIZE: 416
+  IOU_THRES: 0.6
+  PADDING:
+    - 100
+    - 100
+    - 100
+    - 0
+  WEIGHTS: weights/yolov5m_clothes_16_03_21_2v89f2b8.pt
+PERSON_MODEL:
+  AGNOSTIC_NMS: true
+  CONF_THRES: 0.5
+  DEVICE: 0 #'cpu' #0
+  IMG_SIZE: 416
+  IOU_THRES: 0.6
+  PADDING: 0
+  WEIGHTS: weights/yolov5s.pt
+KEYPOINTS_MODEL:
+  DEVICE: 0 #'cpu' #0
+  CUDNN:
+    BENCHMARK: true
+    DETERMINISTIC: false
+    ENABLED: true
+  GPUS: 
+    - 0
+  WEIGHTS: weights/pose_hrnet_w32_256x192.pth
+  IMG_SIZE:
+    - 256
+    - 192
+  MODEL:
+    INIT_WEIGHTS: false
+    NAME: pose_hrnet
+    NUM_JOINTS: 17
+    EXTRA:
+      PRETRAINED_LAYERS:
+      - 'conv1'
+      - 'bn1'
+      - 'conv2'
+      - 'bn2'
+      - 'layer1'
+      - 'transition1'
+      - 'stage2'
+      - 'transition2'
+      - 'stage3'
+      - 'transition3'
+      - 'stage4'
+      FINAL_CONV_KERNEL: 1
+      STAGE2:
+        NUM_MODULES: 1
+        NUM_BRANCHES: 2
+        BLOCK: BASIC
+        NUM_BLOCKS:
+        - 4
+        - 4
+        NUM_CHANNELS:
+        - 32
+        - 64
+        FUSE_METHOD: SUM
+      STAGE3:
+        NUM_MODULES: 4
+        NUM_BRANCHES: 3
+        BLOCK: BASIC
+        NUM_BLOCKS:
+        - 4
+        - 4
+        - 4
+        NUM_CHANNELS:
+        - 32
+        - 64
+        - 128
+        FUSE_METHOD: SUM
+      STAGE4:
+        NUM_MODULES: 3
+        NUM_BRANCHES: 4
+        BLOCK: BASIC
+        NUM_BLOCKS:
+        - 4
+        - 4
+        - 4
+        - 4
+        NUM_CHANNELS:
+        - 32
+        - 64
+        - 128
+        - 256
+        FUSE_METHOD: SUM
+  KEYPOINTS_NAMES:
+    - nose
+    - l_eye
+    - r_eye
+    - l_ear
+    - r_ear
+    - l_shoulder
+    - r_shoulder
+    - l_elbow
+    - r_elbow
+    - l_wrist
+    - r_wrist
+    - l_hip
+    - r_hip
+    - l_knee
+    - r_knee
+    - l_ankle
+    - r_ankle
+WEAR_CONTROL:
+  THRESHOLDS:
+    jacket: 0.7
+    pants: 0.6
+    gloves: 0.3
+    helmet: 0.6
+    shield: 0.5
+  MARGINS:
+    jacket:
+      - 0
+      - 0
+      - 0
+      - 50
+    pants:
+      - 0
+      - 0
+      - 0
+      - 130
+    gloves: 200
+    helmet: 30
+    shield: 0
